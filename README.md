@@ -1,4 +1,4 @@
-# Project Template: React/Rails API
+# The Social Chef
 
 ## Description
 

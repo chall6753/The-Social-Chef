@@ -2,8 +2,8 @@ import React from 'react';
 import {Routes, Route} from 'react-router-dom'
 import '../App.css';
 import Home from './Home'
-import Navbar from './Navbar';
-
+import Navbar from './navigation/Navbar';
+import Header from './Header'
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       </div>
       <div className="body"> 
         <Routes>
-           <Route exact path='/' element={<Home/>}/>
+           <Route path='/' element={<Home/>}/>
            
         </Routes>
       </div>

@@ -6,8 +6,7 @@ function Header(){
 
     return(
         <div>
-            <NavLink to="/recipes" exact="true">Recipes</NavLink>
-            <NavLink to="/chefs" exact="true">Chefs</NavLink>
+            Hello World
             
 
         </div>

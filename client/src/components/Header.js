@@ -6,8 +6,8 @@ function Header(){
 
     return(
         <div>
-            Hello World
-            
+            <NavLink to='/login'>Login</NavLink>
+            <NavLink to='/signup'>Sign Up</NavLink>
 
         </div>
     )

@@ -9,6 +9,7 @@ function Navbar(){
             <NavLink to="/" exact="true">Home</NavLink>
             <NavLink to="/recipes" exact="true">Recipes</NavLink>
             <NavLink to="/chefs" exact="true">Chefs</NavLink>
+            <NavLink to='/login' exact='true'>Login</NavLink>
             
 
         </div>

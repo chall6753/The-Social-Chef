@@ -10,6 +10,8 @@ import RecipeDetail from './recipes/RecipeDetail'
 import ChefList from './users/ChefList'
 import ChefDetail from './users/ChefDetail'
 
+
+
 function App() {
   const [users, setUsers]=useState([])
   const [recipes, setRecipes]=useState([])
@@ -33,6 +35,7 @@ function App() {
     })
   },[])
 
+  console.log(recipes)
 
   return (
     <div className="main">
@@ -46,7 +49,7 @@ function App() {
       <div className="body"> 
         <Routes>
            <Route path='/' element={<Home/>}/>
-           <Route path='/recipes' element={<RecipeList/>}/>
+           <Route path='/recipes' element={<RecipeList recipes={recipes}/>}/>
            <Route path='/recipes/:id' element={<RecipeDetail/>}/>
            <Route path='/chefs' element={<ChefList/>}/>
            <Route path='/chef/:id' element={<ChefDetail/>}/>

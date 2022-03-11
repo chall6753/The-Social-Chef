@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-    skip_before_action: :authorized, only: :create
-    #login
+    skip_before_action :authorize, only: :create
+    #/login
     def create
         user = User.find_by(username: params[:username])
         if user &.authenticate(params[:password])
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
             byebug
             render json: user, status: :created
         else
-            render json: {errors: user.errors}, status: :unprocessable_entity
+            render json: {errors: "Unauthorized"}, status: :unauthorized
         end
     end
 

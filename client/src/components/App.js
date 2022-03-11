@@ -9,7 +9,7 @@ import RecipeList from './recipes/RecipeList'
 import RecipeDetail from './recipes/RecipeDetail'
 import ChefList from './users/ChefList'
 import ChefDetail from './users/ChefDetail'
-
+import SignUp from './sessions/SignUp'
 
 
 function App() {
@@ -35,6 +35,7 @@ function App() {
     })
   },[])
 
+  console.log(currentUser)
   console.log(users)
   console.log(recipes)
   return (
@@ -53,6 +54,8 @@ function App() {
            <Route path='/recipes/:id' element={<RecipeDetail/>}/>
            <Route path='/chefs' element={<ChefList users={users}/>}/>
            <Route path='/chef/:id' element={<ChefDetail/>}/>
+           <Route path='/login' element={<Login onLogin={setCurrentUser}/>}/>
+           <Route path='/signup' element={<SignUp onlogin={setCurrentUser}/>}/>
         </Routes>
       </div>
     </div>

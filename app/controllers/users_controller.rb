@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:update, :destroy]
+  skip_before_action :authorize, exept: [:destroy]
 
   # GET /users
   def index
@@ -10,8 +11,12 @@ class UsersController < ApplicationController
 
   # GET /auth
   def show
-    current_user = User.find_by(session[:user_id])
-    render json: current_user, status: :ok
+    user = User.find_by(session[:user_id])
+    if user
+      render json: current_user, status: :ok
+    else
+      render json: {error: user.errors}, status: :not_found
+    end
   end
 
   # POST /users

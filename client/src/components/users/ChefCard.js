@@ -1,11 +1,11 @@
 import React from 'react';
 
-function ChefCard() {
+function ChefCard({user}) {
 
 
   return (
     <div>
-      <h1>Chef Card</h1>
+      <h1>{user.username}</h1>
         
         
     </div>

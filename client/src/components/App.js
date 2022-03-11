@@ -35,8 +35,8 @@ function App() {
     })
   },[])
 
+  console.log(users)
   console.log(recipes)
-
   return (
     <div className="main">
       <header> 
@@ -51,7 +51,7 @@ function App() {
            <Route path='/' element={<Home/>}/>
            <Route path='/recipes' element={<RecipeList recipes={recipes}/>}/>
            <Route path='/recipes/:id' element={<RecipeDetail/>}/>
-           <Route path='/chefs' element={<ChefList/>}/>
+           <Route path='/chefs' element={<ChefList users={users}/>}/>
            <Route path='/chef/:id' element={<ChefDetail/>}/>
         </Routes>
       </div>

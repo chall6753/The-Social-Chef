@@ -24,6 +24,7 @@ function App() {
     .then(()=>fetch("/recipes"))
     .then(res => res.json())
     .then(data=>setRecipes(data))
+    console.log('fetch')
   },[])
 
   useEffect(()=>{
@@ -33,6 +34,7 @@ function App() {
         res.json().then(user => setCurrentUser(user))
       }
     })
+    console.log('auth')
   },[])
 
   console.log(currentUser)
@@ -55,7 +57,7 @@ function App() {
            <Route path='/chefs' element={<ChefList users={users}/>}/>
            <Route path='/chef/:id' element={<ChefDetail/>}/>
            <Route path='/login' element={<Login onLogin={setCurrentUser}/>}/>
-           <Route path='/signup' element={<SignUp onlogin={setCurrentUser}/>}/>
+           <Route path='/signup' element={<SignUp onLogin={setCurrentUser}/>}/>
         </Routes>
       </div>
     </div>

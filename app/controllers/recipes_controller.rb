@@ -10,8 +10,9 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1
+  #need to serialize this data
   def show
-    render json: @recipe
+    render json: @recipe, include: ['recipe_ingredients.ingredient']
   end
 
   # POST /recipes

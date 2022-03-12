@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :update, :destroy]
   skip_before_action :authorize, exept: [:destroy, :create, :update]
-
+  
   # GET /recipes
   def index
     @recipes = Recipe.all
@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   #need to serialize this data
   def show
-    render json: @recipe, include: ['recipe_ingredients.ingredient']
+    render json: [@recipe], include: ['user', 'recipe_ingredients.ingredient']
   end
 
   # POST /recipes

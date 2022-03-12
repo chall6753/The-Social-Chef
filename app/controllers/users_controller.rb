@@ -11,9 +11,9 @@ class UsersController < ApplicationController
 
   # GET /auth
   def show
-    user = User.find_by(session[:user_id])
+    user = User.find_by(id: session[:user_id])
     if user
-      render json: current_user, status: :ok
+      render json: user, status: :ok
     else
       render json: {error: "Please login"}, status: :not_found
     end

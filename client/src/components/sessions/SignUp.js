@@ -31,27 +31,26 @@ function SignUp({onLogin}) {
     }
 
   return (
-    <div>
-      <h1>Login</h1>
+    <form className='signup' onSubmit={onSubmit}>  
+      <h1>Sign Up!</h1>
         
-        <form onSubmit={onSubmit}> 
-            <label>first name: </label>
-            <input type='text' onChange={e => setFirstName(e.target.value)}></input>
-            <label>last name: </label>
-            <input type='text' onChange={e => setLastName(e.target.value)}></input>
-            <label>email: </label>
-            <input type='text' onChange={e => setEmail(e.target.value)}></input>
-            <label>username: </label>
-            <input type='text' onChange={e => setUsername(e.target.value)}></input>
-            <label>password: </label>
-            <input type='text' onChange={e => setPassword(e.target.value)}></input>
-            <label>confirm password: </label>
-            <input type='text' onChange={e => setPasswordConfirmation(e.target.value)}></input>
-            
+        <label>first name: </label>
+        <input type='text' onChange={e => setFirstName(e.target.value)}></input>
+        <label>last name: </label>
+        <input type='text' onChange={e => setLastName(e.target.value)}></input>
+        <label>email: </label>
+        <input type='text' onChange={e => setEmail(e.target.value)}></input>
+        <label>username: </label>
+        <input type='text' onChange={e => setUsername(e.target.value)}></input>
+        <label>password: </label>
+        <input type='text' onChange={e => setPassword(e.target.value)}></input>
+        <label>confirm password: </label>
+        <input type='text' onChange={e => setPasswordConfirmation(e.target.value)}></input>
+        
 
-            <button>login</button>
-        </form>
-    </div>
+        <button>sign up</button>
+    </form>
+    
   );
 }
 

@@ -34,16 +34,17 @@ function App() {
         res.json().then(user => setCurrentUser(user))
       }
     })
+    
     console.log('auth')
   },[])
-
+  
   console.log(currentUser)
   console.log(users)
   console.log(recipes)
   return (
     <div className="main">
       <header> 
-        <Header/>
+        <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>  
       </header>
       
       <div className="sidenav">

@@ -13,9 +13,19 @@ class UsersController < ApplicationController
   def show
     user = User.find_by(id: session[:user_id])
     if user
-      render json: user, status: :ok
+      render json: user, include: ['recipes'], status: :ok
     else
       render json: {error: "Please login"}, status: :not_found
+    end
+  end
+
+  # GET /chefs/:id
+  def showChef
+    user = User.find_by(id: params[:id])
+    if user
+      render json: user, status: :ok
+    else
+      render json: {error: "Chef does not exist"}, status: :not_found
     end
   end
 

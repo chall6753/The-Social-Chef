@@ -62,7 +62,7 @@ function App() {
             <Route path='/recipes' element={<RecipeList recipes={recipes}/>}/>
             <Route path='/recipes/:id' element={<RecipeDetail/>}/>
             <Route path='/chefs' element={<ChefList users={users}/>}/>
-            <Route path='/chef/:id' element={<ChefDetail/>}/>
+            <Route path='/chefs/:id' element={<ChefDetail/>}/>
             <Route path='/login' element={<Login onLogin={setCurrentUser}/>}/>
             <Route path='/signup' element={<SignUp onLogin={setCurrentUser}/>}/>
           </Routes>

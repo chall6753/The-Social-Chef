@@ -4,13 +4,13 @@ import {useParams} from 'react-router-dom'
 function RecipeDetail() {
   const[recipe,setRecipe]=useState('')
   let recipeId = useParams().id
-  console.log(recipeId)
+  
   useEffect(()=>{
     fetch(`/recipes/${recipeId}`)
     .then((res => res.json()))
     .then((data)=> setRecipe(data))
   },[])
-  console.log(recipe[0])
+  
   if(recipe != ''){
     return (
     <div>

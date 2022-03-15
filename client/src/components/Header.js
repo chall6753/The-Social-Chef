@@ -16,10 +16,12 @@ function Header({currentUser, setCurrentUser}){
     if (currentUser !== ''){
         console.log('user is not nil')
         return(
-            <div>
-                <h3>Welcome {currentUser.username}</h3>
-                <Button type='button' onClick={logout}>logout</Button>
-            </div>
+            <header className='topHeader'>
+                <h3 style={{float: "left"}}>Welcome {currentUser.username}</h3>
+                <div style={{float: "right"}} data-initials="GC"></div>
+                <span style={{float: "right"}} onClick={logout}>Logout</span>
+                
+            </header>
         )
     }
     else{

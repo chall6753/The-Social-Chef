@@ -1,14 +1,13 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom'
+import {Card} from 'react-bootstrap'
 function ChefCard({user}) {
 
 
   return (
-    <div>
-      <h1>{user.username}</h1>
-        
-        
-    </div>
+    <Card>
+      <Link to={`/chefs/${user.id}`}>{user.username}</Link>
+    </Card>
   );
 }
 

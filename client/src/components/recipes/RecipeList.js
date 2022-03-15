@@ -3,14 +3,14 @@ import RecipeCard from './RecipeCard'
 
 function RecipeList({recipes}) {
 
-
+console.log(recipes)
   return (
-    <div>
+    <div >
       <h1>Recipe List</h1>
         
       <ul>
         {recipes.map(recipe => {
-          return <li><RecipeCard recipe={recipe}/></li>  
+          return <RecipeCard recipe={recipe}/> 
         })
         }
       </ul>

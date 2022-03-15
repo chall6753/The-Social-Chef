@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Form, Container, Button} from 'react-bootstrap';
 
 function SignUp({onLogin}) {
     const[firstName, setFirstName]=useState('')
@@ -31,25 +32,30 @@ function SignUp({onLogin}) {
     }
 
   return (
-    <form className='signup' onSubmit={onSubmit}>  
+    <Container>
+      <Form className='signup' onSubmit={onSubmit}>  
       <h1>Sign Up!</h1>
-        
-        <label>first name: </label>
-        <input type='text' onChange={e => setFirstName(e.target.value)}></input>
-        <label>last name: </label>
-        <input type='text' onChange={e => setLastName(e.target.value)}></input>
-        <label>email: </label>
-        <input type='text' onChange={e => setEmail(e.target.value)}></input>
-        <label>username: </label>
-        <input type='text' onChange={e => setUsername(e.target.value)}></input>
-        <label>password: </label>
-        <input type='text' onChange={e => setPassword(e.target.value)}></input>
-        <label>confirm password: </label>
-        <input type='text' onChange={e => setPasswordConfirmation(e.target.value)}></input>
-        
+        <Form.Group>
+          <Form.Label>first name: </Form.Label>
+          <Form.Control type='text' onChange={e => setFirstName(e.target.value)}></Form.Control>
+        </Form.Group>
+          <Form.Label>last name: </Form.Label>
+          <Form.Control type='text' onChange={e => setLastName(e.target.value)}></Form.Control>
+          <Form.Label>email: </Form.Label>
+          <Form.Control type='email' onChange={e => setEmail(e.target.value)}></Form.Control>
+          <Form.Label>username: </Form.Label>
+          <Form.Control type='text' onChange={e => setUsername(e.target.value)}></Form.Control>
+          <Form.Label>password: </Form.Label>
+          <Form.Control type='password' onChange={e => setPassword(e.target.value)}></Form.Control>
+        <Form.Group>
+          <Form.Label>confirm password: </Form.Label>
+          <Form.Control type='password' onChange={e => setPasswordConfirmation(e.target.value)}></Form.Control>
+        </Form.Group>
+        <Button type='signup'>sign up</Button>
+    </Form>
 
-        <button>sign up</button>
-    </form>
+    </Container>
+    
     
   );
 }

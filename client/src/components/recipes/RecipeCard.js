@@ -1,18 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Card} from 'react-bootstrap'
 
 function RecipeCard({recipe}) {
 
 
   return (
-    <div>
+    <Card>
      
       <Link to={`/recipes/${recipe.id}`}>
-        <h1>{recipe.name}</h1>
+        <Card.Title>{recipe.name}</Card.Title>
       </Link>
       
         
-    </div>
+    </Card>
   );
 }
 

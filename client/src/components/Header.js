@@ -1,6 +1,6 @@
 import React from "react"
 import {NavLink} from "react-router-dom"
-
+import Button from 'react-bootstrap/Button'
 
 function Header({currentUser, setCurrentUser}){
     
@@ -18,7 +18,7 @@ function Header({currentUser, setCurrentUser}){
         return(
             <div>
                 <h3>Welcome {currentUser.username}</h3>
-                <button type='button' onClick={logout}>logout</button>
+                <Button type='button' onClick={logout}>logout</Button>
             </div>
         )
     }

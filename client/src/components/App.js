@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom'
 import '../App.css';
 import Home from './Home'
-import Navbar from './navigation/Navbar';
+import NavbarSide from './navigation/NavbarSide';
 import Header from './Header'
 import Login from './sessions/Login'
 import RecipeList from './recipes/RecipeList'
@@ -10,7 +10,8 @@ import RecipeDetail from './recipes/RecipeDetail'
 import ChefList from './users/ChefList'
 import ChefDetail from './users/ChefDetail'
 import SignUp from './sessions/SignUp'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container,Row, Col} from 'react-bootstrap'
 
 function App() {
   const [users, setUsers]=useState([])
@@ -43,24 +44,40 @@ function App() {
   console.log(recipes)
   return (
     <div className="main">
-      <header> 
-        <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>  
-      </header>
+      <Container>
+        <Row>
+          <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+        </Row> 
+          
+      </Container>
       
-      <div className="sidenav">
-        <Navbar/>
-      </div>
-      <div className="body"> 
-        <Routes>
-           <Route path='/' element={<Home/>}/>
-           <Route path='/recipes' element={<RecipeList recipes={recipes}/>}/>
-           <Route path='/recipes/:id' element={<RecipeDetail/>}/>
-           <Route path='/chefs' element={<ChefList users={users}/>}/>
-           <Route path='/chef/:id' element={<ChefDetail/>}/>
-           <Route path='/login' element={<Login onLogin={setCurrentUser}/>}/>
-           <Route path='/signup' element={<SignUp onLogin={setCurrentUser}/>}/>
-        </Routes>
-      </div>
+      <Container margin='10px'>
+        <Row>
+          <Col lg={3}>
+          <NavbarSide/>
+        </Col>
+        <Col lg={true}>
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/recipes' element={<RecipeList recipes={recipes}/>}/>
+            <Route path='/recipes/:id' element={<RecipeDetail/>}/>
+            <Route path='/chefs' element={<ChefList users={users}/>}/>
+            <Route path='/chef/:id' element={<ChefDetail/>}/>
+            <Route path='/login' element={<Login onLogin={setCurrentUser}/>}/>
+            <Route path='/signup' element={<SignUp onLogin={setCurrentUser}/>}/>
+          </Routes>
+          </Col>
+        </Row>
+        
+          
+        
+        
+        
+      </Container>
+      <Container> 
+        
+        
+      </Container>
     </div>
   );
 }

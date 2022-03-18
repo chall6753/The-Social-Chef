@@ -12,13 +12,24 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   #need to serialize this data
   def show
-    render json: [@recipe], include: ['user', 'recipe_ingredients.ingredient']
+  
+    render json: @recipe, include: ['user', 'recipe_ingredients.ingredient', 'comments.user.username']
   end
 
   # POST /recipes
   def create
-    @recipe = Recipe.new(recipe_params)
+    @user = User.find_by(id: session[:user_id])
+    @recipe = @user.recipes.create(recipe_params)
+    byebug
+    recipe_ingredient_params[:recipe_ingredients].map do |ingredient|     #map through the array of recipe ingredient objects
+      ingredient_id = Ingredient.find_or_create_by(name: ingredient[:ingredient]).id      
+      @recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: ingredient[:quantity], unit: ingredient[:unit] )
+      byebug
+    end
 
+    
+    byebug
+    
     if @recipe.save
       render json: @recipe, status: :created, location: @recipe
     else
@@ -48,6 +59,10 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:user_id, :name, :description, :instructions)
+      byebug
+      params.require(:recipe).permit(:name, :description, :instructions)
+    end
+    def recipe_ingredient_params
+      params.permit(recipe_ingredients: [ :ingredient, :quantity, :unit])
     end
 end

@@ -3,8 +3,8 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.all
-
+    @comments = Comment.order(:created_at)
+    # sort by newest first
     render json: @comments
   end
 
@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = Comment.new(comment_params)
-
     if @comment.save
       render json: @comment, status: :created, location: @comment
     else
@@ -46,6 +45,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:user_id, :recipe_id, :comment, :rating)
+      params.permit(:user_id, :recipe_id, :comment, :rating)
     end
 end

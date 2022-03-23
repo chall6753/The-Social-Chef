@@ -1,11 +1,11 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :update, :destroy]
-  skip_before_action :authorize, exept: [:destroy, :create, :update]
+  before_action :authorize , only:[:create]
+  before_action :authorize_user, only: [:destroy, :update]
   
   # GET /recipes
   def index
     @recipes = Recipe.all
-
     render json: @recipes
   end
 
@@ -20,15 +20,12 @@ class RecipesController < ApplicationController
   def create
     @user = User.find_by(id: session[:user_id])
     @recipe = @user.recipes.create(recipe_params)
-    byebug
+    
     recipe_ingredient_params[:recipe_ingredients].map do |ingredient|     #map through the array of recipe ingredient objects
       ingredient_id = Ingredient.find_or_create_by(name: ingredient[:ingredient]).id      
       @recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: ingredient[:quantity], unit: ingredient[:unit] )
-      byebug
+      
     end
-
-    
-    byebug
     
     if @recipe.save
       render json: @recipe, status: :created, location: @recipe
@@ -49,6 +46,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
+    byebug
   end
 
   private
@@ -59,10 +57,17 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      byebug
+      
       params.require(:recipe).permit(:name, :description, :instructions)
     end
     def recipe_ingredient_params
       params.permit(recipe_ingredients: [ :ingredient, :quantity, :unit])
+    end
+
+    #only let users with user_id == recipe.user_id get authorized to delete or update 
+    def authorize_user
+      
+      user_can_modify = session[:user_id] == @recipe.user_id
+      return render json: {error: "not authorized for this action"}, status: :unauthorized unless user_can_modify
     end
 end

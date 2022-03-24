@@ -4,7 +4,9 @@ import {Card} from 'react-bootstrap'
 
 function RecipeCard({recipe}) {
 
+console.log(recipe)
 
+if (recipe != undefined){
   return (
     <Card>
      
@@ -15,6 +17,12 @@ function RecipeCard({recipe}) {
         
     </Card>
   );
+}
+else {
+  return null
+}
+
+  
 }
 
 export default RecipeCard;

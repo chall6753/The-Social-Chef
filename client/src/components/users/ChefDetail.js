@@ -3,23 +3,24 @@ import {useParams} from 'react-router-dom'
 import RecipeCard from '../recipes/RecipeCard'
 
 function ChefDetail() {
-const[recipe, setRecipe]=useState('')
+const[chef, setChef]=useState('')
 let userId = useParams().id
 
 
   useEffect(()=> {
     fetch(`/chefs/${userId}`)
     .then((res) => res.json())
-    .then((data) => setRecipe(data))
+    .then((data) => setChef(data))
   },[])
-console.log(recipe)
+console.log(chef)
 
-if (recipe != ''){
+if (chef != ''){
    return (
     <div>
-      <h1>{recipe.username}</h1>
+      <h1>{chef.username}</h1>
+      <p>{chef.bio}</p>
       <ul>
-        {recipe.recipes.map((recipe)=>{
+        {chef.recipes.map((recipe)=>{
           return <RecipeCard recipe={recipe}/>
         })}
       </ul>

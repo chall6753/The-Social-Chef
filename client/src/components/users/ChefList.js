@@ -8,7 +8,7 @@ console.log(users)
       <h1>Chef List</h1>
       <ul>
         {users.map(user => {
-          return <li><ChefCard user={user}/></li>  
+          return <ChefCard user={user}/>  
         })
         }
       </ul>

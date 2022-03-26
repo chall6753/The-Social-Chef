@@ -9,7 +9,7 @@ function Home({currentUser, recipes, users}) {
   const [randRecipes, setRandRecipes]=useState('')
   const [randChefs, setRandChefs] = useState('')
 
-  useEffect(() => setUserRecipes(recipes.filter(r => r.user.id == currentUser.id)),[currentUser])
+  useEffect(() => setUserRecipes(recipes.filter(r => r.user.id == currentUser.id)),[currentUser,recipes])
 
   useEffect(
     function handleRandRecipes(){

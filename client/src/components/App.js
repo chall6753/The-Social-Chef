@@ -11,6 +11,7 @@ import ChefList from './users/ChefList'
 import ChefDetail from './users/ChefDetail'
 import SignUp from './sessions/SignUp'
 import RecipeCreate from './recipes/RecipeCreate'
+import Account from './users/Account'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Row, Col} from 'react-bootstrap'
 
@@ -20,6 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState('')
   const navigate = useNavigate()
 
+  //initial fetch of data
   useEffect(() =>{
     fetch("/users")
     .then(res => res.json())
@@ -28,7 +30,7 @@ function App() {
     .then(res => res.json())
     .then(data=>setRecipes(data))
   },[])
-
+  //check to see if the user is already logged in when page refreshes or they leave and revisit
   useEffect(()=>{
     fetch('/auth')
     .then(res => {
@@ -66,7 +68,7 @@ function App() {
         </Col>
         <Col lg={true}>
           <Routes>
-            <Route path='/' element={<Home/>}/>
+            <Route path='/' element={<Home currentUser={currentUser} recipes={recipes} users={users}/>}/>
             <Route path='/recipes' element={<RecipeList recipes={recipes}/>}/>
             <Route path='/recipes/:id' element={<RecipeDetail currentUser={currentUser} handleDeleteRecipe={handleDeleteRecipe}/>}/>
             <Route path='/chefs' element={<ChefList users={users}/>}/>
@@ -74,6 +76,7 @@ function App() {
             <Route path='/login' element={<Login onLogin={setCurrentUser}/>}/>
             <Route path='/signup' element={<SignUp onLogin={setCurrentUser}/>}/>
             <Route path='/recipes/create' element={<RecipeCreate recipes ={recipes} setRecipes={setRecipes}/>}/>
+            <Route path='/account' element={<Account currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
           </Routes>
           </Col>
         </Row>

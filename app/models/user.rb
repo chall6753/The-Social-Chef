@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     #Associations
-    has_many :recipes 
-    has_many :comments
+    has_many :recipes, dependent: :destroy 
+    has_many :comments, dependent: :destroy
     has_secure_password
 
     #validations

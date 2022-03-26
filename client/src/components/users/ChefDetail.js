@@ -12,7 +12,7 @@ let userId = useParams().id
     .then((res) => res.json())
     .then((data) => setChef(data))
   },[])
-console.log(chef)
+console.log(chef.recipes)
 
 if (chef != ''){
    return (
@@ -20,9 +20,9 @@ if (chef != ''){
       <h1>{chef.username}</h1>
       <p>{chef.bio}</p>
       <ul>
-        {chef.recipes.map((recipe)=>{
+        {chef.recipes != undefined ?chef.recipes.map((recipe)=>{
           return <RecipeCard recipe={recipe}/>
-        })}
+        }):null}
       </ul>
         
         

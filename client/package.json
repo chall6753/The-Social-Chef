@@ -2,7 +2,7 @@
   "name": "the-social-chef",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": "https://young-falls-16456.herokuapp.com", 
   "engines": {
     "node": "16.x"
   },

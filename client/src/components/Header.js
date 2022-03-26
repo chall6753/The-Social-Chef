@@ -1,27 +1,30 @@
 import React from "react"
-import {NavLink} from "react-router-dom"
-import Button from 'react-bootstrap/Button'
+import {NavLink, useNavigate} from "react-router-dom"
+import {Navbar,Container, Nav} from 'react-bootstrap'
 
 function Header({currentUser, setCurrentUser}){
-    
+    const navigate = useNavigate()
+
     function logout(e){
         e.preventDefault()
         console.log('yeet')
         fetch('/logout',{
-            method: 'DELETE',
+            method: 'DELETE'
         })
-        .then(setCurrentUser(''))       //when session userid is deleted we want to set current user back to default of ''
+        .then(setCurrentUser('')).then(navigate('/'))       //when session userid is deleted we want to set current user back to default of ''
     }
 
     if (currentUser !== ''){
-        console.log('user is not nil')
         return(
-            <header className='topHeader'>
-                <h3 style={{float: "left"}}>Welcome {currentUser.username}</h3>
-                <div style={{float: "right"}} data-initials="GC"></div>
-                <span style={{float: "right"}} onClick={logout}>Logout</span>
-                
-            </header>
+            <Navbar>
+                <Container>
+                    <h3 style={{float: "left"}}>Welcome {currentUser.username}</h3>
+                    <div style={{float: "right"}} data-initials={currentUser.first_name[0] + currentUser.last_name[0]}></div>
+                    <Nav.Link style={{float: "right"}} onClick={logout}>Logout</Nav.Link>
+                    <NavLink to='/account' style={{textDecoration: "none"}}>Account</NavLink>
+                </Container>
+            </Navbar>
+            
         )
     }
     else{

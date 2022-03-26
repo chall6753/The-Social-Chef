@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Form, Container, Button} from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom'
 
 function SignUp({onLogin}) {
     const[firstName, setFirstName]=useState('')
@@ -8,6 +9,8 @@ function SignUp({onLogin}) {
     const[username,setUsername]=useState('')
     const[password,setPassword]=useState('')
     const[passwordConfirmation,setPasswordConfirmation]=useState('')
+
+    const navigate = useNavigate()
 
     function onSubmit(e){
     e.preventDefault()
@@ -28,7 +31,8 @@ function SignUp({onLogin}) {
                 if(res.ok){
                     res.json().then(user => onLogin(user))
                 }  
-            })     
+            })
+            .then(navigate('/'))     
     }
 
   return (

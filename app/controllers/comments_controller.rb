@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.order(:created_at)
+    @comments = Comment.all
     # sort by newest first
     render json: @comments
   end

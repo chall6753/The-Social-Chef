@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:update, :destroy]
-  skip_before_action :authorize, exept: [:destroy]
+  before_action :set_user, only: [:update, :destroy, :showChef]
+  skip_before_action :authorize, only: [:show, :create, :showChef, :index]
 
   # GET /users
   def index
@@ -18,12 +18,12 @@ class UsersController < ApplicationController
       render json: {error: "Please login"}, status: :not_found
     end
   end
-
+  
   # GET /chefs/:id
   def showChef
-    user = User.find_by(id: params[:id])
-    if user
-      render json: user, status: :ok
+    
+    if @user
+      render json: @user, status: :ok
     else
       render json: {error: "Chef does not exist"}, status: :not_found
     end
@@ -31,13 +31,13 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
+    user = User.new(user_params)
 
-    if @user.save
-      session[:user_id] = @user.id
-      render json: @user, status: :created, location: @user
+    if user.save
+      session[:user_id] = user.id
+      render json: user, status: :created, location: user
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_entity
     end
   end
 
@@ -50,9 +50,16 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
+  # DELETE /users/1  makes sure user logged in can only delete their own account
   def destroy
-    @user.destroy
+    user = User.find(session[:user_id])
+    byebug
+    if user.id == params[:id].to_i
+      user.destroy
+    else
+      render json: {error: "not authorized to delete this user"}, status: :unauthorized
+
+    end
   end
 
   private
@@ -65,4 +72,6 @@ class UsersController < ApplicationController
     def user_params
       params.permit(:username, :first_name, :last_name, :email, :password)
     end
+
+ 
 end

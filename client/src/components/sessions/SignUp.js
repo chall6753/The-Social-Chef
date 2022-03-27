@@ -14,7 +14,7 @@ function SignUp({onLogin}) {
 
     function onSubmit(e){
     e.preventDefault()
-    console.log('yeet')
+    
     fetch('/api/users',{
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
@@ -30,9 +30,10 @@ function SignUp({onLogin}) {
             res =>{
                 if(res.ok){
                     res.json().then(user => onLogin(user))
+                    navigate('/')
                 }  
             })
-            .then(navigate('/'))     
+               
     }
 
   return (

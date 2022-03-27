@@ -4,17 +4,12 @@ import {Card} from 'react-bootstrap'
 
 function RecipeCard({recipe}) {
 
-console.log(recipe)
-
 if (recipe != undefined){
   return (
     <Card>
-     
       <Link to={`/recipes/${recipe.id}`}>
         <Card.Title>{recipe.name}</Card.Title>
       </Link>
-      
-        
     </Card>
   );
 }

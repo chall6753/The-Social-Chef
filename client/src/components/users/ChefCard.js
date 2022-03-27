@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import {Card} from 'react-bootstrap'
 function ChefCard({user}) {
 
-console.log(user)
 
 if (user != undefined){
    return (

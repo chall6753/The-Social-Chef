@@ -12,7 +12,7 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
   let recipeId = useParams().id
   
   useEffect(()=>{
-    fetch(`/recipes/${recipeId}`)
+    fetch(`/api/recipes/${recipeId}`)
     .then((res => res.json()))
     .then((data)=> {
       setRecipe(data)

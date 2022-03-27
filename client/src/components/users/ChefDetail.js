@@ -8,7 +8,7 @@ let userId = useParams().id
 
 
   useEffect(()=> {
-    fetch(`/chefs/${userId}`)
+    fetch(`/api/chefs/${userId}`)
     .then((res) => res.json())
     .then((data) => setChef(data))
   },[])

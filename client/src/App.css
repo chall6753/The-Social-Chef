@@ -14,12 +14,12 @@
 }
 
 .sidenavLink {
-  
   text-decoration: none;
-  font-size: 50px;
+  font-size: 35px;
   color: #000000;
   display: block;
   transition: 0.3s;
+
 }
 
 ul{
@@ -29,9 +29,7 @@ ul{
 }
 
 .main{
-  
   display: grid;
-  
 }
 
 .topHeader {
@@ -52,4 +50,12 @@ ul{
   height: 50px; 
   line-height: 50px; 
   text-align: center; 
+  }
+
+  input[type="radio"]{
+    display:none;
+  }
+  .star {
+    cursor: pointer;
+    transition: color 200ms;
   }

@@ -15,7 +15,7 @@ function SignUp({onLogin}) {
     function onSubmit(e){
     e.preventDefault()
     console.log('yeet')
-    fetch('/users',{
+    fetch('/api/users',{
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({

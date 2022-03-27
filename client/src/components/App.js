@@ -23,16 +23,16 @@ function App() {
 
   //initial fetch of data
   useEffect(() =>{
-    fetch("/users")
+    fetch("/api/users")
     .then(res => res.json())
     .then(data => setUsers(data))
-    .then(()=>fetch("/recipes"))
+    .then(()=>fetch("/api/recipes"))
     .then(res => res.json())
     .then(data=>setRecipes(data))
   },[])
   //check to see if the user is already logged in when page refreshes or they leave and revisit
   useEffect(()=>{
-    fetch('/auth')
+    fetch('/api/auth')
     .then(res => {
       if (res.ok){
         res.json().then(user => setCurrentUser(user))
@@ -42,7 +42,7 @@ function App() {
   
   function handleDeleteRecipe(e,recipeId){
     e.preventDefault()
-    fetch(`/recipes/${recipeId}`,{
+    fetch(`/api/recipes/${recipeId}`,{
       method: 'DELETE',
     })
     .then(res=>{

@@ -25,7 +25,7 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
   }
   function handleAddComment(e,comment,rating){
     e.preventDefault()
-    fetch('/comments',{
+    fetch('/api/comments',{
       method: 'POST',
       headers: {"Content-Type": 'application/json'},
       body: JSON.stringify({

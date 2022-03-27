@@ -9,18 +9,25 @@ const navigate = useNavigate()
 function onSubmit(e){
   e.preventDefault()
   console.log('yeet')
-  fetch('/sessions',{
+  fetch('/api/sessions',{
     method: 'POST',
     headers: {"Content-Type": 'application/json'},
     body: JSON.stringify({
       username: username,
       password: password,
-    })})
+    })
+  })
     .then(res => {
-      if(res.ok){res.json().then(user => onLogin(user))
-      navigate('/') 
-    }})
- 
+      if(res.ok){
+        res.json().then(user => onLogin(user))
+        navigate('/') 
+      }
+      else{
+        res.json().then(res => alert(res.errors))
+      }
+    }
+  )
+
 }
 
   return (

@@ -1,4 +1,4 @@
-class API::RecipesController < ApplicationController
+class Api::RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :update, :destroy]
   before_action :authorize , only:[:create]
   before_action :authorize_user, only: [:destroy, :update]

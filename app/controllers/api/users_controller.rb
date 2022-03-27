@@ -1,4 +1,4 @@
-class API::UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   before_action :set_user, only: [:update, :destroy, :showChef]
   skip_before_action :authorize, only: [:show, :create, :showChef, :index]
 

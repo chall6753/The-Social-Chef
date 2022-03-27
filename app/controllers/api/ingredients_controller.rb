@@ -1,4 +1,4 @@
-class API::IngredientsController < ApplicationController
+class Api::IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :update, :destroy]
 
   # GET /ingredients

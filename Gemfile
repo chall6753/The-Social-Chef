@@ -41,12 +41,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
-  gem 'faker'
+  
 end
 
 group :test do
   gem 'rspec-json_expectations'
   gem 'shoulda-matchers', '~> 4.0'
 end
-
+gem 'faker'
 gem "active_model_serializers", "~> 0.10.12"

@@ -33,6 +33,7 @@ class Api::UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      byebug
       session[:user_id] = user.id
       render json: user, status: :created
     else
@@ -52,7 +53,6 @@ class Api::UsersController < ApplicationController
   # DELETE /users/1  makes sure user logged in can only delete their own account
   def destroy
     user = User.find(session[:user_id])
-    byebug
     if user.id == params[:id].to_i
       user.destroy
     else

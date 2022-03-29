@@ -8,7 +8,7 @@ function Account({currentUser, setCurrentUser}) {
 const navigate = useNavigate()
 
 function deleteAccount(){
-    fetch(`/users/${currentUser.id}`,{
+    fetch(`/api/users/${currentUser.id}`,{
         method: 'DELETE'
     })
     .then(res => {

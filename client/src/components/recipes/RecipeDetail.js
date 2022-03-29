@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 import {Button} from 'react-bootstrap'
 import Comment from './Comment'
 import AddComment from './AddComment'
@@ -8,6 +8,7 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
   const[recipe,setRecipe]=useState('')
   const[showForm, setShowForm]=useState(0)
   const[comments,setComments]=useState([])
+ 
   
   let recipeId = useParams().id
   
@@ -45,7 +46,13 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
   //show delete and edit buttons if user logged in was the creator of the recipe
   function showDeleteEdit(){
     if (recipe.user.username == currentUser.username){
-      return <Button onClick={(e) => handleDeleteRecipe(e,recipeId)}>Delete</Button>
+      return (
+        <>
+          <Button onClick={(e) => handleDeleteRecipe(e,recipeId)}>Delete</Button>
+          
+        </>
+     
+      )
     }
   }
   

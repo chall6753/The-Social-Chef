@@ -6,7 +6,7 @@ class RecipeSerializer < ActiveModel::Serializer
   
   has_many :recipe_ingredients
   has_many :comments do 
-    object.comments.order(created_at: :desc) #newest comments first
+    object.comments.order(updated_at: :desc) #newest comments first
   end
 
   

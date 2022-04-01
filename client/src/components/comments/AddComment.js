@@ -7,7 +7,7 @@ function AddComment({handleAddComment}) {
 const[rating,setRating]=useState(null)
 const[comment,setComment]=useState(null)
 
-
+console.log(comment)
   return (
     <Card>
       <Form onSubmit={(e)=> handleAddComment(e,comment,rating)}>

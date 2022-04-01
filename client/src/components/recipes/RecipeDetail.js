@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useParams, useNavigate} from 'react-router-dom'
 import {Button} from 'react-bootstrap'
-import Comment from './Comment'
-import AddComment from './AddComment'
+import Comment from '../comments/Comment'
+import AddComment from '../comments/AddComment'
 
 function RecipeDetail({currentUser, handleDeleteRecipe}) {
   const[recipe,setRecipe]=useState('')
@@ -26,6 +26,7 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
   }
   function handleAddComment(e,comment,rating){
     e.preventDefault()
+    console.log(comment)
     fetch('/api/comments',{
       method: 'POST',
       headers: {"Content-Type": 'application/json'},
@@ -38,24 +39,55 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
     })
     .then(res=>{
       if(res.ok) {
-        res.json().then(res=> setComments([res,...comments]))
+        res.json().then(res=> {
+          console.log(res)
+          setComments([res,...comments])
+        })
       }})
     toggleCommentForm() //hides comment form after they submit their comment
     }
   
   //show delete and edit buttons if user logged in was the creator of the recipe
-  function showDeleteEdit(){
-    if (recipe.user.username == currentUser.username){
-      return (
-        <>
-          <Button onClick={(e) => handleDeleteRecipe(e,recipeId)}>Delete</Button>
-          
-        </>
-     
-      )
-    }
+  
+
+  // delete comment
+  function handleDeleteComment(e,commentId){
+    e.preventDefault()
+    fetch(`/api/comments/${commentId}`,{
+      method: 'DELETE',
+    })
+    .then(res=>{
+      if (res.ok){
+        setComments(comments.filter(c=> c.id != commentId)) //r.id of type number while recipeId type string 
+        
+      }
+    })
+  }
+
+  // Edit comment
+  function handleEditComment(e,commentId, updatedComment, updatedRating){
+    e.preventDefault()
+    fetch(`/api/comments/${commentId}`, {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        comment: updatedComment,
+        rating: updatedRating
+      })
+    })
+    .then(res=> {
+      if(res.ok){
+        res.json().then(updatedComment => {
+          console.log(commentId)
+          console.log(updatedComment)
+          let filteredComments = comments.filter(c => c.id != commentId)
+          setComments([updatedComment,...filteredComments])
+        })
+      }
+    })
   }
   
+  console.log(comments)
   if(recipe != ''){
     return (
     <div>
@@ -69,14 +101,16 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
                     </ul>
                 <h3>Cooking Instructions</h3>
                 <p>{recipe.instructions}</p>
-                {showDeleteEdit()}
+                
                 <h3>Comments</h3>
                 {currentUser != '' ? <button type='button' onClick={toggleCommentForm}>Add Comment</button> : ""}
                 {showForm == 1 ? <AddComment recipe={recipe} currentUser={currentUser} handleAddComment={handleAddComment}/>:null}
                         
                 <ul>
+                  {console.log(comments)}
                   {comments.map((comment) => {
-                    return <Comment comment={comment}/>
+                    console.log(comment)
+                    return <Comment currentUser={currentUser} comment={comment} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}/>
                   })}
                 </ul>
         

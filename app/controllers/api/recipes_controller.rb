@@ -12,7 +12,7 @@ class Api::RecipesController < ApplicationController
   # GET /recipes/1
   #need to serialize this data
   def show
-    render json: @recipe, include: ['user', 'recipe_ingredients.ingredient', 'comments.user.username']
+    render json: @recipe, include: ['user', 'recipe_ingredients.ingredient', 'comments.user']
   end
 
   # POST /recipes

@@ -10,6 +10,7 @@ class Api::CommentsController < ApplicationController
 
   # GET /comments/1
   def show
+    byebug
     render json: @comment
   end
 
@@ -25,7 +26,9 @@ class Api::CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   def update
+ 
     if @comment.update(comment_params)
+      
       render json: @comment
     else
       render json: @comment.errors, status: :unprocessable_entity

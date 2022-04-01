@@ -7,7 +7,6 @@ function ChefCard({user}) {
 if (user != undefined){
    return (
     <Card>
-      
       <Link to={`/chefs/${user.id}`}>{user.username}</Link>
     </Card>
   );

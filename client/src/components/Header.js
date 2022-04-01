@@ -7,8 +7,7 @@ function Header({currentUser, setCurrentUser}){
 
     function logout(e){
         e.preventDefault()
-        console.log('yeet')
-        fetch('/logout',{
+        fetch('/api/logout',{
             method: 'DELETE'
         })
         .then(setCurrentUser('')).then(navigate('/'))       //when session userid is deleted we want to set current user back to default of ''

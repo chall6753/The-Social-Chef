@@ -8,7 +8,6 @@ const navigate = useNavigate()
 
 function onSubmit(e){
   e.preventDefault()
-  console.log('yeet')
   fetch('/api/sessions',{
     method: 'POST',
     headers: {"Content-Type": 'application/json'},

@@ -37,7 +37,7 @@ function onSubmit(e){
             <label>username: </label>
             <input type='text' onChange={e => setUsername(e.target.value)}></input>
             <label>password: </label>
-            <input type='text' onChange={e => setPassword(e.target.value)}></input>
+            <input type='password' onChange={e => setPassword(e.target.value)}></input>
             <button>login</button>
         </form>
     </div>

@@ -77,7 +77,7 @@ function App() {
             <Route path='/login' element={<Login onLogin={setCurrentUser}/>}/>
             <Route path='/signup' element={<SignUp onLogin={setCurrentUser}/>}/>
             <Route path='/recipes/create' element={<RecipeCreate recipes ={recipes} setRecipes={setRecipes}/>}/>
-            <Route path='/account' element={<Account currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
+            <Route path='/account' element={<Account currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers}/>}/>
             
           </Routes>
           </Col>

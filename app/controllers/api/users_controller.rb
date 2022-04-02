@@ -54,6 +54,7 @@ class Api::UsersController < ApplicationController
     user = User.find(session[:user_id])
     if user.id == params[:id].to_i
       user.destroy
+      render json: User.all
     else
       render json: {error: "not authorized to delete this user"}, status: :unauthorized
 

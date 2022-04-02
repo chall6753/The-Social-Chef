@@ -3,7 +3,7 @@ import {Container, Button} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
 
 
-function Account({currentUser, setCurrentUser}) {
+function Account({currentUser, setCurrentUser,users, setUsers}) {
 
 const navigate = useNavigate()
 
@@ -14,6 +14,7 @@ function deleteAccount(){
     .then(res => {
         if (res.ok){
             setCurrentUser('')
+            res.json().then(users => setUsers(users))
             navigate('/')
         }
     })

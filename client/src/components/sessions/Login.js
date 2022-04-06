@@ -8,7 +8,7 @@ const navigate = useNavigate()
 
 function onSubmit(e){
   e.preventDefault()
-  fetch('/api/sessions',{
+  fetch('/api/login',{
     method: 'POST',
     headers: {"Content-Type": 'application/json'},
     body: JSON.stringify({

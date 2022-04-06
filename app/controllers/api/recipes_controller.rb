@@ -1,7 +1,7 @@
 class Api::RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :update, :destroy]
+  before_action :set_recipe, only: [:show, :destroy]
   before_action :authorize , only:[:create]
-  before_action :authorize_user, only: [:destroy, :update]
+  before_action :authorize_user, only: [:destroy]
   
   # GET /recipes
   def index
@@ -10,7 +10,6 @@ class Api::RecipesController < ApplicationController
   end
 
   # GET /recipes/1
-  #need to serialize this data
   def show
     render json: @recipe, include: ['user', 'recipe_ingredients.ingredient', 'comments.user']
   end
@@ -25,15 +24,6 @@ class Api::RecipesController < ApplicationController
     end
     if @recipe.save
       render json: @recipe, status: :created
-    else
-      render json: @recipe.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /recipes/1
-  def update
-    if @recipe.update(recipe_params)
-      render json: @recipe
     else
       render json: @recipe.errors, status: :unprocessable_entity
     end

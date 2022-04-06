@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :set_user, only: [:update, :destroy, :showChef]
+  before_action :set_user, only: [:destroy, :showChef]
   skip_before_action :authorize, only: [:show, :create, :showChef, :index]
 
   # GET /users
@@ -37,15 +37,6 @@ class Api::UsersController < ApplicationController
       render json: user, status: :created
     else
       render json: user.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /users/1
-  def update
-    if @user.update(user_params)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
     end
   end
 

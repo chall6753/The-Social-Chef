@@ -9,6 +9,7 @@ class Api::SessionsController < ApplicationController
         else
             render json: {errors: "Incorrect username password combo"}, status: :unauthorized
         end
+
     end
     #/api/destroy
     def destroy

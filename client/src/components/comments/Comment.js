@@ -15,8 +15,8 @@ function Comment({comment, handleDeleteComment, handleEditComment}) {
     setUpdatedRating(comment.rating)
   },[comment])
 
-console.log(comment)
-console.log(updatedComment)
+
+
     function showDeleteEdit(){
       if ( comment.can_modify_comment){
         return (

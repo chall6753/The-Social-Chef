@@ -17,7 +17,9 @@ class Api::RecipesController < ApplicationController
   # POST /recipes
   def create
     @user = User.find_by(id: session[:user_id])
+    
     @recipe = @user.recipes.create(recipe_params)
+    
     recipe_ingredient_params[:recipe_ingredients].map do |ingredient|     #map through the array of recipe ingredient objects
       ingredient_id = Ingredient.find_or_create_by(name: ingredient[:ingredient]).id      
       @recipe.recipe_ingredients.create(ingredient_id: ingredient_id, quantity: ingredient[:quantity], unit: ingredient[:unit] )

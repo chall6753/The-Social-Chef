@@ -101,15 +101,15 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
                     </ul>
                 <h3>Cooking Instructions</h3>
                 <p>{recipe.instructions}</p>
-                
+                {recipe.can_modify_recipe? <Button onClick={e=> handleDeleteRecipe(e, recipe.id)}>Delete Recipe</Button>:null}
                 <h3>Comments</h3>
                 {currentUser != '' ? <button type='button' onClick={toggleCommentForm}>Add Comment</button> : ""}
                 {showForm == 1 ? <AddComment recipe={recipe} currentUser={currentUser} handleAddComment={handleAddComment}/>:null}
                         
                 <ul>
-                  {console.log(comments)}
+                  {console.log(recipe)}
                   {comments.map((comment) => {
-                    console.log(comment)
+                    
                     return <Comment currentUser={currentUser} comment={comment} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}/>
                   })}
                 </ul>

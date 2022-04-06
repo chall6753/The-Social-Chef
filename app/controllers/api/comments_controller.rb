@@ -9,10 +9,10 @@ class Api::CommentsController < ApplicationController
   end
 
   # GET /comments/1
-  def show
-    byebug
-    render json: @comment
-  end
+  # def show
+  #   byebug
+  #   render json: @comment
+  # end
 
   # POST /comments
   def create

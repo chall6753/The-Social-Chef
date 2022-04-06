@@ -13,7 +13,7 @@ namespace :api do
   get "/auth", to: 'users#show'
   get '/chefs/:id', to: 'users#showChef'
   delete '/logout', to: 'sessions#destroy'
-
+  
 
 end
 

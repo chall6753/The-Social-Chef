@@ -25,8 +25,15 @@ function RecipeCreate({recipes, setRecipes}){
         })
         .then((res)=>{
             if (res.ok){
-                navigate('/recipes') //once the recipe submit button and succesful creation of recipe navigate to recipe list
-                res.json().then((recipe)=> setRecipes([...recipes,recipe])) //updates recipes state so page rerenders with new recipe in the list
+                
+                res.json().then((recipe)=> {
+                    setRecipes([...recipes,recipe])
+                    navigate(`/recipes/${recipe.id}`)
+                    }) //updates recipes state so page rerenders with new recipe in the list
+                
+            }
+            else{
+                res.json().then(res=>window.alert(res.errors))
             }
         })
         }

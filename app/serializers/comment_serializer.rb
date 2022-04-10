@@ -1,7 +1,7 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :comment, :rating, :can_modify_comment
+  attributes :id, :comment, :rating, :can_modify_comment, :user
   has_one :user
-  has_one :recipe
+  
 
   def can_modify_comment
     if current_user

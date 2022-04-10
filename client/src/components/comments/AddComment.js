@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {Card, Button, Form} from 'react-bootstrap'
 import {FaStar} from 'react-icons/fa'
 
-function AddComment({handleAddComment}) {
+function AddComment({handleAddComment, toggleCommentForm}) {
 const[rating,setRating]=useState(null)
 const[comment,setComment]=useState(null)
 
@@ -25,6 +25,7 @@ console.log(comment)
               }) 
           }
           <Button type='submit'>Submit Comment</Button>
+          <Button onClick={() => toggleCommentForm()}>Cancel</Button>
       </Form>
         
                 

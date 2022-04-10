@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_secure_password
 
+    
     #validations
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true

@@ -32,23 +32,20 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
       headers: {"Content-Type": 'application/json'},
       body: JSON.stringify({
         recipe_id: recipe.id,
-        user_id: currentUser.id,
         comment: comment,
         rating: rating
       }) 
     })
     .then(res=>{
       if(res.ok) {
-        res.json().then(res=> {
-          console.log(res)
-          setComments([res,...comments])
-        })
-      }})
-    toggleCommentForm() //hides comment form after they submit their comment
+        res.json().then(res=> setComments([res,...comments]))
+        toggleCommentForm() //hides comment form after they submit their comment
+        }
+        else{
+          res.json().then(res=>window.alert(res.comment))
+        }
+      })
     }
-  
-  //show delete and edit buttons if user logged in was the creator of the recipe
-  
 
   // delete comment
   function handleDeleteComment(e,commentId){
@@ -87,7 +84,6 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
     })
   }
   
-  console.log(comments)
   if(recipe != ''){
     return (
     <div>
@@ -104,10 +100,9 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
                 {recipe.can_modify_recipe? <Button onClick={e=> handleDeleteRecipe(e, recipe.id)}>Delete Recipe</Button>:null}
                 <h3>Comments</h3>
                 {currentUser != '' ? <button type='button' onClick={toggleCommentForm}>Add Comment</button> : ""}
-                {showForm == 1 ? <AddComment recipe={recipe} currentUser={currentUser} handleAddComment={handleAddComment}/>:null}
+                {showForm == 1 ? <AddComment handleAddComment={handleAddComment} toggleCommentForm={toggleCommentForm}/>:null}
                         
                 <ul>
-                  {console.log(recipe)}
                   {comments.map((comment) => {
                     
                     return <Comment currentUser={currentUser} comment={comment} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}/>

@@ -11,7 +11,7 @@ class Api::RecipesController < ApplicationController
 
   # GET /recipes/1
   def show
-    render json: @recipe, serializer: RecipeDetailSerializer#, include: ['user', 'recipe_ingredients.ingredient', 'comments.user']
+    render json: @recipe, serializer: RecipeDetailSerializer
   end
 
   # POST /recipes

@@ -1,6 +1,6 @@
 class Api::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
-
+  before_action :authorize, only: [:update, :destroy]
   # GET /comments
   def index
     @comments = Comment.all
@@ -19,18 +19,23 @@ class Api::CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   def update
- 
-    if @comment.update(comment_params)
+    
+    
+      if @comment.update(comment_params)
       
-      render json: @comment
-    else
-      render json: @comment.errors, status: :unprocessable_entity
-    end
+        render json: @comment
+      else
+        render json: @comment.errors, status: :unprocessable_entity
+      end
+    
+      
   end
 
   # DELETE /comments/1
   def destroy
-    @comment.destroy
+    
+       @comment.destroy
+    
   end
 
   private
@@ -43,4 +48,10 @@ class Api::CommentsController < ApplicationController
     def comment_params
       params.permit(:recipe_id, :comment, :rating)
     end
+
+    def authorize
+      user_can_modify = session[:user_id] == @comment.user_id
+      return render json: {error: "not authorized for this action"}, status: :unauthorized unless user_can_modify
+    end
+   
 end

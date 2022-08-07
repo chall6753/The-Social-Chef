@@ -84,6 +84,7 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
     })
   }
   
+  
   if(recipe != ''){
     return (
     <div>
@@ -101,8 +102,9 @@ function RecipeDetail({currentUser, handleDeleteRecipe}) {
                 <h3>Comments</h3>
                 {currentUser != '' ? <button type='button' onClick={toggleCommentForm}>Add Comment</button> : ""}
                 {showForm == 1 ? <AddComment handleAddComment={handleAddComment} toggleCommentForm={toggleCommentForm}/>:null}
-                        
+                       
                 <ul>
+
                   {comments.map((comment) => {
                     
                     return <Comment currentUser={currentUser} comment={comment} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}/>

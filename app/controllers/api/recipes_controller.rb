@@ -16,8 +16,8 @@ class Api::RecipesController < ApplicationController
 
   # POST /recipes
   def create
-    @recipe = current_user.recipes.create(recipe_params)
-    
+    @recipe = current_user.recipes.new(recipe_params)
+    byebug
     if @recipe.save
       RecipeIngredient.new_recipe_ingredient(recipe_ingredient_params, @recipe)
       render json: @recipe, status: :created

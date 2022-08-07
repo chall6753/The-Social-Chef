@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom'
 import '../App.css';
-import Home from './Home'
+import Home from './home/Home'
 import NavbarSide from './navigation/NavbarSide';
 import Header from './Header'
 import Login from './sessions/Login'

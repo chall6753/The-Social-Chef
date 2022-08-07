@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import RecipeCard from './recipes/RecipeCard'
-import ChefCard from './users/ChefCard'
+import RecipeCard from '../recipes/RecipeCard'
+import ChefCard from '../users/ChefCard'
 import {Container} from 'react-bootstrap'
-import '../App.css';
+import '../../App.css';
 
 function Home({currentUser, recipes, users}) {
   const [userRecipes,setUserRecipes]= useState([])
   const [randRecipes, setRandRecipes]=useState('')
   const [randChefs, setRandChefs] = useState('')
 
+  console.log(recipes)
   useEffect(() => setUserRecipes(recipes.filter(r => r.user.id == currentUser.id)),[currentUser,recipes])
 
   useEffect(

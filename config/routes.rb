@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
   
+  
 
 namespace :api do
+  post "/login", to: 'sessions#create' 
+  delete '/logout', to: 'sessions#destroy'
+
+ 
+  get '/login', to: 'sessions#new'
+
+  get "/auth", to: 'users#show'
+  get '/chefs/:id', to: 'users#showChef'
+
   resources :comments, except: [:show]
   resources :recipes, except: [:update]
   resources :users, except: [:update]
   
-  post "/login", to: 'sessions#create' 
-  delete '/logout', to: 'sessions#destroy'
-
-  get "/auth", to: 'users#show'
-  get '/chefs/:id', to: 'users#showChef'
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
+  get '/button', to: 'sessions#button' 
   
 end
 

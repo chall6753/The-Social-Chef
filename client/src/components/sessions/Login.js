@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom'
-
 function Login({onLogin}) {
 const[username,setUsername]=useState('')
 const[password,setPassword]=useState('')
@@ -8,6 +7,7 @@ const navigate = useNavigate()
 
 function onSubmit(e){
   e.preventDefault()
+
   fetch('/api/login',{
     method: 'POST',
     headers: {"Content-Type": 'application/json'},
@@ -26,9 +26,7 @@ function onSubmit(e){
       }
     }
   )
-
 }
-
   return (
     <div>
       <h1>Login</h1>
@@ -43,5 +41,4 @@ function onSubmit(e){
     </div>
   );
 }
-
 export default Login;

@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom'
-import '../App.css';
-import Home from './home/Home'
-import NavbarSide from './navigation/NavbarSide';
-import Header from './Header'
-import Login from './sessions/Login'
-import RecipeList from './recipes/RecipeList'
-import RecipeDetail from './recipes/RecipeDetail'
-import ChefList from './users/ChefList'
-import ChefDetail from './users/ChefDetail'
-import SignUp from './sessions/SignUp'
-import RecipeCreate from './recipes/RecipeCreate'
-import Account from './users/Account'
+import './app.scss';
+import Home from '../home/Home.jsx'
+import NavbarSide from '../navigation/NavbarSide';
+import Topbar from '../topbar/Topbar'
+import Login from '../sessions/Login'
+import RecipeList from '../recipes/RecipeList'
+import RecipeDetail from '../recipes/RecipeDetail'
+import ChefList from '../users/ChefList'
+import ChefDetail from '../users/ChefDetail'
+import SignUp from '../sessions/SignUp'
+import RecipeCreate from '../recipes/RecipeCreate'
+import Account from '../users/Account'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Row, Col} from 'react-bootstrap'
+
 
 
 function App() {
@@ -55,19 +55,12 @@ function App() {
   }
   
   return (
-    <div className="main">
-      <Container>
-        <Row>
-          <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-        </Row> 
-      </Container>
+    <div className="app">
       
-      <Container margin='10px'>
-        <Row>
-          <Col lg={3}>
+          <Topbar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+
           <NavbarSide currentUser={currentUser}/>
-        </Col>
-        <Col lg={true}>
+
           <Routes>
             <Route path='/' element={<Home currentUser={currentUser} recipes={recipes} users={users}/>}/>
             <Route path='/recipes' element={<RecipeList recipes={recipes}/>}/>
@@ -80,10 +73,8 @@ function App() {
             <Route path='/account' element={<Account currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers}/>}/>
             
           </Routes>
-          </Col>
-        </Row>
-      </Container>
-      
+          
+
     </div>
   );
 }

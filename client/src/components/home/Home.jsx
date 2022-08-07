@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import RecipeCard from '../recipes/RecipeCard'
 import ChefCard from '../users/ChefCard'
 import {Container} from 'react-bootstrap'
-import '../../App.css';
+import './home.scss'
 
 function Home({currentUser, recipes, users}) {
   const [userRecipes,setUserRecipes]= useState([])

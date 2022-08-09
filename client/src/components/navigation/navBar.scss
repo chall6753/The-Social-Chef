@@ -4,21 +4,20 @@
     height: 100%;
     position: absolute;
     top: 0;
-    z-index: 3;
+    z-index: 2;
     min-height: 500px;
 
 
     ul{
         position:absolute;
-        top: 100px;
+        top: 120px;
         width: 100%;
         display: block;
         padding:0;
         list-style: none;
         text-align: center;
         margin: 0;
-
-        li{
+       
             .sideLink{
                 color: white;
                 padding: 10px 0;
@@ -26,12 +25,12 @@
                 font-size: 20px;
                 line-height: 16px;
                 text-decoration: none;
-
+                
                 &:hover {
-                    color: #ffd700;
+                    color: #099bdd;
                 }
             }
-        }
+        
         }
 }
 

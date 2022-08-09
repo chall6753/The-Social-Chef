@@ -6,11 +6,53 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    z-index: 3;
 
-    .link{
-        color: white;
-        font-size: 25px;
-        text-decoration: none;
-        padding: 20px 20px;
+        
+    
+    .left{
+        z-index: inherit;
+        flex:1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        
+        img{
+            position: relative;
+            max-width: 60px;
+            max-height: 100%;
+            left: 20px;
+            border-radius:15px;
+        }
+        h3{
+        padding-left: 100px;
+        color:white;
+        }
     }
+    
+    .right{
+        flex: 1;
+        
+
+        ul{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            
+            li{
+                font-size: 20px;
+                margin-right: 20px;
+                list-style: none;
+
+                a{
+                    color:white;
+                    text-decoration: none;
+                }
+            }  
+        }
+        
+    }
+    
 }

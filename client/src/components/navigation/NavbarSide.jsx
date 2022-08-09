@@ -11,11 +11,13 @@ function NavbarSide({currentUser}){
                 
             <nav className='side-nav'>
                 <ul>
-                        <Link className='sideLink' to='/'>Home</Link>       
-                        <Link className='sideLink' to="/recipes" exact="true">Recipes</Link>
-                        <Link className='sideLink' to="/chefs" exact="true">Chefs</Link>
-                        <Link className='sideLink' to='/recipes/create' exact='true'>Share Recipe</Link>
-                        </ul>
+                    <Link className='sideLink' to='/'>Home</Link>      
+                    <Link className='sideLink' to="/recipes" exact="true">Recipes</Link>   
+                    <Link className='sideLink' to="/chefs" exact="true">Chefs</Link>   
+                    <Link className='sideLink' to='/recipes/create' exact='true'>Share Recipe</Link> 
+                </ul>
+                      
+                
             </nav>   
                         
                   
@@ -27,9 +29,9 @@ function NavbarSide({currentUser}){
         return(
             <nav className='side-nav'>
                 <ul>
-                    <li><Link className='sideLink' to='/'>Home</Link></li>
-                    <li><Link className='sideLink' to="/recipes" exact="true">Recipes</Link></li>       
-                    <li><Link className='sideLink' to="/chefs" exact="true">Chefs</Link></li>
+                    <Link className='sideLink' to='/'>Home</Link>
+                    <Link className='sideLink' to="/recipes" exact="true">Recipes</Link>      
+                    <Link className='sideLink' to="/chefs" exact="true">Chefs</Link>
                 </ul>
                  
             </nav>         

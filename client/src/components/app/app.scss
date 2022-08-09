@@ -1,21 +1,11 @@
 
-
-
-
-
-/* ul{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-} */
-
-/* .main{
-  display: grid;
-} */
-
-/* .topHeader {
-  float: left;
-} */
+.app-container{
+  position: relative;
+  left: 100px;
+  height: calc(100vh - 100px);
+  width: calc(100vw - 100px)
+  
+}
 
 [data-initials]:before {
   background: #099bdd;

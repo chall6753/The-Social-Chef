@@ -5,9 +5,9 @@ import Home from '../home/Home.jsx'
 import NavbarSide from '../navigation/NavbarSide';
 import Topbar from '../topbar/Topbar'
 import Login from '../sessions/Login'
-import RecipeList from '../recipes/RecipeList'
+import RecipeList from '../recipes/recipeList/RecipeList.jsx'
 import RecipeDetail from '../recipes/RecipeDetail'
-import ChefList from '../users/ChefList'
+import ChefList from '../users/chefList/ChefList'
 import ChefDetail from '../users/ChefDetail'
 import SignUp from '../sessions/SignUp'
 import RecipeCreate from '../recipes/RecipeCreate'
@@ -48,7 +48,7 @@ function App() {
     })
     .then(res=>{
       if (res.ok){
-        setRecipes(recipes.filter(r=> r.id != recipeId)) //r.id of type number while recipeId type string 
+        setRecipes(recipes.filter(r=> r.id !== recipeId)) //r.id of type number while recipeId type string 
         navigate('/recipes')
       }
     })
@@ -61,7 +61,8 @@ function App() {
 
           <NavbarSide currentUser={currentUser}/>
 
-          <Routes>
+          <div className="app-container">
+            <Routes>
             <Route path='/' element={<Home currentUser={currentUser} recipes={recipes} users={users}/>}/>
             <Route path='/recipes' element={<RecipeList recipes={recipes}/>}/>
             <Route path='/recipes/:id' element={<RecipeDetail currentUser={currentUser} handleDeleteRecipe={handleDeleteRecipe}/>}/>
@@ -73,6 +74,8 @@ function App() {
             <Route path='/account' element={<Account currentUser={currentUser} setCurrentUser={setCurrentUser} users={users} setUsers={setUsers}/>}/>
             
           </Routes>
+          </div>
+          
           
 
     </div>

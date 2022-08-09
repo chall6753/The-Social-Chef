@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom'
-import RecipeCard from '../recipes/RecipeCard'
+import RecipeCard from '../recipes/recipeCard/RecipeCard.jsx'
 
 function ChefDetail() {
 const[chef, setChef]=useState('')

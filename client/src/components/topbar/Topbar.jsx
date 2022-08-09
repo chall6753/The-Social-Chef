@@ -17,11 +17,22 @@ function Header({currentUser, setCurrentUser}){
     if (currentUser !== ''){
         return(
             
-                <div classname='topbar'>
-                    <h3 >Welcome {currentUser.username}</h3>
-                    <div data-initials={currentUser.first_name[0] + currentUser.last_name[0]}></div>
-                    <Link  onClick={logout}>Logout</Link>
-                    <Link to='/account' >Account</Link>
+                <div className='topbar'>
+                    <div className="left">
+                            <img src="https://icon-library.com/images/cook-icon/cook-icon-29.jpg" alt="" />
+                        <h3>The Social Chef</h3>
+                    </div>
+                    <div className="right">
+                        <ul>
+                            <li><div data-initials={currentUser.first_name[0] + currentUser.last_name[0]}></div></li>
+                            <li><Link to='/' onClick={logout}>Logout</Link></li>
+                            <li><Link to='/account' >Account</Link> </li> 
+                        </ul>
+                        
+                    </div>
+                        
+                    
+                    
                 </div>
             
             

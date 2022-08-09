@@ -1,16 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Card} from 'react-bootstrap'
+import './recipeCard.scss'
 
 function RecipeCard({recipe}) {
 
 if (recipe != undefined){
   return (
-    <Card>
-      <Link to={`/recipes/${recipe.id}`}>
-        <Card.Title>{recipe.name}</Card.Title>
+    <div className="recipe-card">
+      <Link className='link' to={`/recipes/${recipe.id}`}>
+        <h2>{recipe.name}</h2>
       </Link>
-    </Card>
+    </div>
+      
+  
   );
 }
 else {

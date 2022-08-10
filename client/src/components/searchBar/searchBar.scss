@@ -1,0 +1,18 @@
+.search{
+    flex: 2;
+    label{
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 5px;
+    }
+    input{
+    height: 25px;
+    border-radius: 10px;
+    padding-left: 6px;
+
+    &:focus{
+        outline: none !important;
+        border-color: #099bdd;
+    }
+}
+}

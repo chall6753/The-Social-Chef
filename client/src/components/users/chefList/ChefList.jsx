@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import ChefCard from '../chefCard/ChefCard'
 import './chefList.scss'
+import SearchBar from '../../searchBar/SearchBar.jsx'
+
 function ChefList({users}) {
   const [filteredUsers, setFilteredUsers] = useState(users)
   const [search, setSearch] = useState('')
@@ -30,8 +32,7 @@ function ChefList({users}) {
     <div className='chef-list-container'>
       <div className="top">
         <h1>Chef List</h1>
-        <label>search</label>
-        <input onChange={handleSearch} type="text"/>
+        <SearchBar handleSearch={handleSearch}/>
       </div>
      
       <ul>

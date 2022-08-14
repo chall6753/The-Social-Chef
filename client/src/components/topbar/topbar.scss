@@ -1,6 +1,8 @@
 .topbar{
     height: 100px;
     width: 100vw;
+    position: sticky;
+    top:0;
     background-color: #181818;
     display: flex;
     flex-direction: row;

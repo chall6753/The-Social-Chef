@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import './addIngredient.scss'
 
 function AddIngredient({addIngredient}){
     const[ingredientName,setIngredientName]=useState('')
@@ -12,16 +13,21 @@ function AddIngredient({addIngredient}){
     }
     
     return(
-        <div>
-            
-                <label>Ingredient: </label>
+        <div className="add-ingredient-container">
+            <div className="input">
+                <label>Ingredient:</label>
                 <input type="text" onChange={(e)=>setIngredientName(e.target.value)}></input>
+            </div>
+            <div className="input">
                 <label>Quantity:</label>
                 <input type="text" onChange={(e)=>setQuantity(e.target.value)}></input>
+            </div>
+            <div className="input">
                 <label>Unit:</label>
-                <input type='text' onChange={(e)=>setUnit(e.target.value)}></input>
-                <button type="submit" onClick={handleAddIngredient}>Add Ingredient</button>
-                
+            <input type='text' onChange={(e)=>setUnit(e.target.value)}></input>
+            </div>
+            
+            <button type="submit" onClick={handleAddIngredient}>Add Ingredient</button>   
         </div>
     );
 }

@@ -35,7 +35,7 @@ function RecipeList({recipes}) {
       </div>
       
       <ul>
-        {filteredRecipes.map(recipe => {
+        {filteredRecipes.slice(0,15).map(recipe => {
           return <RecipeCard key={recipe.id} recipe={recipe}/> 
         })
         }

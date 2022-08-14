@@ -10,7 +10,7 @@ import RecipeDetail from '../recipes/RecipeDetail'
 import ChefList from '../users/chefList/ChefList'
 import ChefDetail from '../users/ChefDetail'
 import SignUp from '../sessions/SignUp'
-import RecipeCreate from '../recipes/RecipeCreate'
+import RecipeCreate from '../recipes/recipeCreate/RecipeCreate.jsx'
 import Account from '../users/Account'
 import 'bootstrap/dist/css/bootstrap.min.css';
 

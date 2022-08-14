@@ -1,0 +1,38 @@
+.side-nav{
+    background: #181818;
+    width: 100px;
+    height: 100vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    min-height: 500px;
+
+
+    ul{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 120px;
+        width: 100%;
+        display: block;
+        padding:0;
+        list-style: none;
+        text-align: center;
+        margin: 0;
+       
+            .sideLink{
+                color: white;
+                padding: 10px 0;
+                display: block;
+                font-size: 20px;
+                line-height: 16px;
+                text-decoration: none;
+                
+                &:hover {
+                    color: #099bdd;
+                }
+            }
+        
+        }
+}
+

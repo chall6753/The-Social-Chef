@@ -1,0 +1,21 @@
+.chef-list-container{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    
+    .top{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        h1{
+            flex:1;
+            padding-left: 50px;
+            margin: 30px;
+        }
+
+        
+        
+    }
+    
+}

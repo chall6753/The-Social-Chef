@@ -1,39 +1,40 @@
 import React from "react"
-import {NavLink} from 'react-router-dom'
-import {Navbar, Nav, Container} from 'react-bootstrap'
+import { Link} from 'react-router-dom'
+import './navBar.scss' 
+
 
 function NavbarSide({currentUser}){
 
     if (currentUser != ''){
         return(
-            <div>
-                <Navbar className='sidenav'>
-                    <Nav>
-                        <ul>
-                        <NavLink className='sidenavLink' to='/'>Home</NavLink>       
-                        <NavLink className='sidenavLink' to="/recipes" exact="true">Recipes</NavLink>
-                        <NavLink className='sidenavLink' to="/chefs" exact="true">Chefs</NavLink>
-                        <NavLink className='sidenavLink' to='/recipes/create' exact='true'>Share Recipe</NavLink>
-                        </ul>
-                    </Nav> 
-                </Navbar>
-            </div>        
+           
+                
+            <nav className='side-nav'>
+                <ul>
+                    <Link className='sideLink' to='/'>Home</Link>      
+                    <Link className='sideLink' to="/recipes" exact="true">Recipes</Link>   
+                    <Link className='sideLink' to="/chefs" exact="true">Chefs</Link>   
+                    <Link className='sideLink' to='/recipes/create' exact='true'>Share Recipe</Link> 
+                </ul>
+                      
+                
+            </nav>   
+                        
+                  
+                
+                  
         )
     }
     else{
         return(
-            <div>
-            <Navbar className='sidenav'>
-                    <Nav>
-                        <ul>
-                        <NavLink className='sidenavLink' to='/'>Home</NavLink>       
-                        <NavLink className='sidenavLink' to="/recipes" exact="true">Recipes</NavLink>
-                        <NavLink className='sidenavLink' to="/chefs" exact="true">Chefs</NavLink>
-                        </ul>
-                    </Nav> 
-                    
-                </Navbar>
-            </div>         
+            <nav className='side-nav'>
+                <ul>
+                    <Link className='sideLink' to='/'>Home</Link>
+                    <Link className='sideLink' to="/recipes" exact="true">Recipes</Link>      
+                    <Link className='sideLink' to="/chefs" exact="true">Chefs</Link>
+                </ul>
+                 
+            </nav>         
         )
     }
    

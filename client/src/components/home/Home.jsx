@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import RecipeCard from '../recipes/RecipeCard'
-import ChefCard from '../users/ChefCard'
+import RecipeCard from '../recipes/recipeCard/RecipeCard.jsx'
+import ChefCard from '../users/chefCard/ChefCard'
 import {Container} from 'react-bootstrap'
-import '../../App.css';
+import './home.scss'
 
 function Home({currentUser, recipes, users}) {
   const [userRecipes,setUserRecipes]= useState([])
@@ -29,8 +29,7 @@ function Home({currentUser, recipes, users}) {
 
   if (currentUser != ''){  //if a user is logged in show their recipes on the home page
     return (
-      <div>
-        <h1>The Social Chef!</h1>
+      <div className='home-container'>
           <h3>My Recipes</h3>
           <ul>
             {userRecipes.map(r => <RecipeCard recipe={r}/>)}

@@ -1,14 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import {Card} from 'react-bootstrap'
+import './chefCard.scss'
 function ChefCard({user}) {
 
 
 if (user != undefined){
    return (
-    <Card>
-      <Link to={`/chefs/${user.id}`}>{user.username}</Link>
-    </Card>
+    <div className="chef-card">
+      <Link className='link' to={`/chefs/${user.id}`}>
+        <h2>{user.username}</h2>
+      </Link>
+    </div>
+      
+    
   );
 }
 else{
